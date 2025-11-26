@@ -1,0 +1,67 @@
+[package]
+name = "safir"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "safir"
+crate-type = ["lib", "cdylib"]
+
+[profile.dev]
+opt-level = 0
+strip = "debuginfo"
+split-debuginfo = "unpacked"
+debug = false
+
+[profile.dev.package."*"]
+opt-level = 3
+debug = false
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
+
+[workspace]
+resolver = "3"
+members = ["platforms/android"]
+
+
+[dependencies]
+bevy = { version = "0.17.3", default-features = false, features = [
+  "bevy_asset",
+  "bevy_camera",
+  "bevy_color",
+  "bevy_core_pipeline",
+  "bevy_gizmos",
+  "bevy_log",
+  "bevy_picking",
+  "bevy_sprite",
+  "bevy_sprite_render",
+  "bevy_sprite_picking_backend",
+  "bevy_state",
+  "bevy_text",
+  "bevy_ui",
+  "bevy_ui_render",
+  "bevy_ui_debug",
+  "bevy_ui_picking_backend",
+  "bevy_window",
+  "bevy_winit",
+  "custom_cursor",
+  "default_font",
+  "multi_threaded",
+  "png",
+  "sysinfo_plugin",
+  "tonemapping_luts",
+  "experimental_bevy_ui_widgets",
+  "zstd_rust",
+] }
+log = { version = "0.4", features = [
+  "max_level_debug",
+  "release_max_level_warn",
+] }
+bevy_asset_loader = { version = "0.24.0-rc.1", default-features = false, features = [
+  "2d",
+] }
+bevy_tweening = { git = "https://github.com/djeedai/bevy_tweening", rev = "8df9dadd25dd10b03d3543713aba9ab6dbcfa31a" }

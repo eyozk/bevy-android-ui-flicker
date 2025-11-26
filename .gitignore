@@ -1,0 +1,10 @@
+/target
+.idea/
+.DS_Store
+
+# android
+.gradle/
+.cxx/
+build/
+jniLibs/
+local.properties

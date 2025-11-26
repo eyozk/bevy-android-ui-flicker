@@ -1,0 +1,15 @@
+[package]
+name = "android"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "android"
+crate-type = ["lib", "cdylib"]
+
+
+[dependencies]
+bevy = { version = "0.17.3", default-features = false, features = [
+  "android-native-activity",
+] }
+safir = { path = "../.." }
